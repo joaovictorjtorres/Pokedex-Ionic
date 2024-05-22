@@ -1,0 +1,10 @@
+<div class="box">
+
+    <div class="list">
+        <app-pokecard *ngFor="let item of pokemonList"
+        [pokeName]="item.name"
+        [pokeId]="item.order.toString().padStart(3, '0')"
+        [pokeImage]="item.sprites.front_default"></app-pokecard>
+    </div> 
+
+</div>

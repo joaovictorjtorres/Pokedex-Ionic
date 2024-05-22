@@ -1,0 +1,23 @@
+*{
+    background-color: rgb(82, 82, 82);
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+@media (min-width: 1175px) {
+    .list {
+        margin: 0 100px;
+    }
+}
+
+@media (min-width: 1200px){
+    .list {
+        margin: 0 200px;
+    }
+}
