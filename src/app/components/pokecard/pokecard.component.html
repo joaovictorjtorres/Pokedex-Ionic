@@ -1,9 +1,18 @@
 <div class="box">
-  <h3>#{{pokeId}}</h3>
 
   <div class="box-imgBox">
   <img src="{{pokeImage}}">
+
+    <h4 class="pokeId">n⁰ {{pokeId}}</h4>
+    <h3 class="pokeName">{{pokeName}}</h3>
+
+    <div class="boxTypes">
+      <h5 class="{{ pokeTypes[0] }}-type">{{ pokeTypes[0] }}</h5>
+      <ng-container *ngIf="pokeTypes[1]">
+        <h5 class="{{ pokeTypes[1] }}-type">{{ pokeTypes[1] }}</h5>
+      </ng-container>
+    </div>
+
+  </div>
 </div>
 
-<h3>{{pokeName}}</h3>
-</div>

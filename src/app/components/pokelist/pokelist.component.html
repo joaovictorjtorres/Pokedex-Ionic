@@ -1,10 +1,85 @@
-<div class="box">
+<div class="box" >
 
     <div class="list">
         <app-pokecard *ngFor="let item of pokemonList"
-        [pokeName]="item.name"
-        [pokeId]="item.order.toString().padStart(3, '0')"
-        [pokeImage]="item.sprites.front_default"></app-pokecard>
-    </div> 
+        [pokeName]="item.name.charAt(0).toUpperCase() + item.name.slice(1).toLowerCase()"
+        [pokeId]="item.id.toString().padStart(4, '0')"
+        [pokeImage]="item.sprites.other['official-artwork'].front_default"
+        [pokeTypes]="getTypes(item)"
+        (click)="openModal(
+          item.sprites.other['official-artwork'].front_default,
+          item.name.charAt(0).toUpperCase() + item.name.slice(1).toLowerCase(),
+          item.id.toString().padStart(4, '0'),
+          getTypes(item),
+          item.height,
+          item.weight,
+          item.stats[0].base_stat,
+          item.stats[1].base_stat,
+          item.stats[2].base_stat,
+          item.stats[3].base_stat,
+          item.stats[4].base_stat,
+          item.stats[5].base_stat
+          )"></app-pokecard>
+    </div>
 
+    <ion-modal [isOpen]="isModalOpen" (willDismiss)="closeModal()" class="custom-modal">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar color="dark">
+            <ion-title>{{selectedName}}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button class="close-button" (click)="closeModal()">x</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-card class="pokemon-card">
+            <img class="pokemon-image"[src]="selectedImage" />
+            <ion-card-header>
+              <h6 class="pokemonOrder">{{selectedOrder}}</h6>
+              <h3 class="pokemonName">{{selectedName}}</h3>
+              <div class="pokemonTypes">
+                <h4 class="{{ selectedTypes[0] }}-type">{{selectedTypes[0]}}</h4>
+                <ng-container *ngIf="selectedTypes[1]">
+                  <h4 class="{{ selectedTypes[1] }}-type">{{ selectedTypes[1] }}</h4>
+                </ng-container>
+              </div>
+              <div class="pokemonHW">
+                <h6>Height: {{selectedHeight}} ft</h6>
+                <h6>Weight: {{selectedWeight}} kg</h6>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <ul class="pokemonStats">
+                <li>
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(selectedHp)"></div>
+                  <b>HP</b><i>{{selectedHp}}</i>
+              </li>
+              <li>
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(selectedAtk)"></div>
+                  <b>ATK</b><i>{{selectedAtk}}</i>
+              </li>
+              <li> 
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(selectedDef)"></div>
+                  <b>DEF</b><i>{{selectedDef}}</i>
+              </li>
+              <li>
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(selectedSpAtk)"></div>
+                  <b>SPATK</b><i>{{selectedSpAtk}}</i>
+              </li>
+              <li>
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(selectedSpDef)"></div>
+                  <b>SPDEF</b><i>{{selectedSpDef}}</i>
+              </li>
+              <li>
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(selectedSpd)"></div>
+                  <b>SPD</b><i>{{selectedSpd}}</i>
+              </li>
+              
+              </ul>
+            </ion-card-content>
+          </ion-card>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
 </div>

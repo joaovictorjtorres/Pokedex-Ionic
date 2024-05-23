@@ -1,3 +1,50 @@
+$normal-color: #a8a878;
+$fire-color: #f08030;
+$water-color: #6890f0;
+$grass-color: #78c850;
+$electric-color: #f8d030;
+$ice-color: #98d8d8;
+$fighting-color: #e57373;
+$poison-color: #a040a0;
+$ground-color: #e0c068;
+$flying-color: #a890f0;
+$psychic-color: #f85888;
+$bug-color: #a8b820;
+$rock-color: #b8a038;
+$ghost-color: #705898;
+$dark-color: #705848;
+$dragon-color: #AFAFAF;
+$steel-color: #b8b8d0;
+$fairy-color: #ee99ac;
+
+$type-colors: (
+    normal: $normal-color,
+    fire: $fire-color,
+    water: $water-color,
+    grass: $grass-color,
+    electric: $electric-color,
+    ice: $ice-color,
+    fighting: $fighting-color,
+    poison: $poison-color,
+    ground: $ground-color,
+    flying: $flying-color,
+    psychic: $psychic-color,
+    bug: $bug-color,
+    rock: $rock-color,
+    ghost: $ghost-color,
+    dark: $dark-color,
+    dragon: $dragon-color,
+    steel: $steel-color,
+    fairy: $fairy-color,
+);
+
+@each $type, $color in $type-colors {
+  .#{$type}-type {
+      background-color: $color;
+      color: #fff;
+  }
+}
+
 .box {
   &, & * { box-sizing: border-box; transition: 400ms; }
   width: 100%;
@@ -22,33 +69,39 @@
       display: block;
       width: 200px;
       height: auto;
-      transform: rotate(5deg)
+      transform: rotate(5deg);
     }
   }
-  // &-title {
-  //   text-align: center;
-  //   margin-top: 15px;
-  //   // color: #FFF;
-  //   font-size: 20px;
-  //   font-weight: 400;
-  //   font-family: "Lato";
-  // }
-  // &-content {
-  //   position: absolute;
-  //   right: 15px; bottom: 15px; left: 15px;
-  //   text-align: center;
-  //   font-size: 14px;
-  //   font-family: "Lato";
-  //   letter-spacing: .1em;
-  //   opacity: 0;
-  // }
-  // &:hover &-imgBox {
-  //   transform: translateY(-20px);
-  // }
   &:hover &-imgBox img {
     transform: translate(-10px, -25px) rotate(-5deg) scale(1.2);
   }
-  // &:hover &-title {
-  //   margin-bottom: 40px;
-  // }
 }
+  
+.pokeId {
+  text-align: left;
+  margin-top: 10px;
+  color: #838383;
+  font-size: 14px;
+}
+  
+.pokeName {
+  text-align: center;
+  font-size: 25px;
+}
+
+.boxTypes{
+  margin-top: -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.boxTypes h5{
+  padding: 2px 15px;
+  border-radius: 10%;
+  border-end-start-radius: 20%;
+  border-start-end-radius: 20%;
+}
+
