@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemodalComponent } from '../pokemodal/pokemodal.component';
 
@@ -19,4 +19,5 @@ export class PokecardComponent {
   pokeImage:string;
   @Input()
   pokeTypes:string[];
+  
 }

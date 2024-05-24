@@ -7,20 +7,20 @@ import { Observable, forkJoin } from 'rxjs';
 })
 export class PokemonService {
 
-private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon';
+  private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon';
 
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-getEndpoint(id: number): Observable<any> {
-  return this.http.get(`${this.baseUrl}/${id}/`);
-}
-
-getPokemonData(): Observable<any[]> {
-  let endpoints: Observable<any>[] = [];
-  for (let i = 1; i <= 151; i++) {
-    endpoints.push(this.getEndpoint(i));
+  getEndpoint(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}/`);
   }
-  return forkJoin(endpoints);
-}
-  
+
+  getPokemonData(): Observable<any[]> {
+    let endpoints: Observable<any>[] = [];
+    for (let i = 1; i <= 151; i++) {
+      endpoints.push(this.getEndpoint(i));
+    }
+    return forkJoin(endpoints);
+  }
+   
 }

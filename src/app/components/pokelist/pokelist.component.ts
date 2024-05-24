@@ -2,46 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { PokecardComponent } from '../pokecard/pokecard.component';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from 'src/app/service/pokeservice/pokemon.service';
-import { IonModal } from '@ionic/angular/standalone';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonCard,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonCardContent,
-  IonButton,
-  IonInput,
-  IonButtons,
-  IonCardHeader,
-  IonIcon,
-} from '@ionic/angular/standalone';
+import { PokemodalComponent } from '../pokemodal/pokemodal.component';
 
 @Component({
   selector: 'app-pokelist',
   templateUrl: './pokelist.component.html',
   styleUrls: ['./pokelist.component.scss'],
   standalone: true,
-  imports: [
-    PokecardComponent,
-    CommonModule, 
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonButton,
-    IonInput,
-    IonButtons,
-    IonCardContent,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonCardHeader,
-    IonModal,
-    IonIcon,
-    IonCard
-  ]
+  imports: [ PokecardComponent, CommonModule, PokemodalComponent ]
 })
 export class PokelistComponent implements OnInit {
 
@@ -58,7 +26,6 @@ export class PokelistComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.pokemonList = res
-          console.log(res)
         },
         error: (err) => {
           console.error(err)
@@ -74,72 +41,27 @@ export class PokelistComponent implements OnInit {
   }
 
   isModalOpen = false;
-  
-  selectedImage:string;
-  selectedName:string;
-  selectedOrder:number;
-  selectedTypes:string[];
-  selectedHeight:number;
-  selectedWeight:number;
-  selectedHp:number;
-  selectedAtk:number;
-  selectedDef:number;
-  selectedSpAtk:number;
-  selectedSpDef:number;
-  selectedSpd:number;
 
-  openModal(
-    imageUrl: string,
-    name: string,
-    order:number,
-    types:string[],
-    height: number,
-    weight: number,
-    hp: number,
-    atk: number,
-    def: number,
-    spAtk: number,
-    spDef: number,
-    spd: number) {
+  selectedPoke: object = {};
+
+  openModal(selectedPokeInfo:any) {
       
     this.isModalOpen = true;
 
-    this.selectedImage = imageUrl;
-    this.selectedOrder = order;
-    const newLocal = this;
-    this.selectedTypes = types;
-    newLocal.selectedHeight = height;
-    this.selectedWeight = weight;
-    this.selectedName = name;
-    this.selectedHp = hp;
-    this.selectedAtk = atk;
-    this.selectedDef = def;
-    this.selectedSpAtk = spAtk;
-    this.selectedSpDef = spDef;
-    this.selectedSpd = spd;
-  }
-
-  closeModal() {
-
-    this.isModalOpen = false;
-
-  }
-
-
-  getProgressBarClass(stat: number): string {
-
-    if (stat >= 0 && stat <= 49) {
-      return 'one-bar';
-    } else if (stat >= 50 && stat <= 79) {
-      return 'two-bar';
-    } else if (stat >= 80 && stat <= 99) {
-      return 'three-bar';
-    } else if (stat >= 100 && stat <= 119) {
-      return 'four-bar';
-    } else if (stat >= 120) {
-      return 'five-bar';
-    }
-    return '';
+    this.selectedPoke = {
+          image: selectedPokeInfo.sprites.other['official-artwork'].front_default,
+          name: selectedPokeInfo.name.charAt(0).toUpperCase() + selectedPokeInfo.name.slice(1).toLowerCase(),
+          order: selectedPokeInfo.id.toString().padStart(4, '0'),
+          types: this.getTypes(selectedPokeInfo),
+          height: selectedPokeInfo.height / 10,
+          weight: selectedPokeInfo.weight / 10,
+          hp: selectedPokeInfo.stats[0].base_stat,
+          atk: selectedPokeInfo.stats[1].base_stat,
+          def: selectedPokeInfo.stats[2].base_stat,
+          spatk: selectedPokeInfo.stats[3].base_stat,
+          spdef: selectedPokeInfo.stats[4].base_stat,
+          spd: selectedPokeInfo.stats[5].base_stat
+        }
   }
 
 }
