@@ -15,9 +15,10 @@ export class PokemonService {
     return this.http.get(`${this.baseUrl}/${id}/`);
   }
 
-  getPokemonData(): Observable<any[]> {
+
+  getPokemonData(start:number = 1, end:number = 40): Observable<any[]> {
     let endpoints: Observable<any>[] = [];
-    for (let i = 1; i <= 151; i++) {
+    for (let i = start; i <= end; i++) {
       endpoints.push(this.getEndpoint(i));
     }
     return forkJoin(endpoints);

@@ -1,17 +1,29 @@
 .box{
     background-image: url('../../../assets/BW_stripes.jpg');
+    background-attachment: fixed;
 
 
 }
 
 .list{
-    background-color: #fff;
+    min-height: 100vh;
+    background-color: white;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 5px;
 }
+
+ion-searchbar {
+    margin-top: 10px;
+    margin-right: 7px;
+    padding: 0;
+    right: 15px;
+    max-width: 300px;
+    position: fixed;
+    z-index: 1;
+  }
 
 .custom-modal {
     --background: rgba(0, 0, 0, 0.75);
@@ -31,4 +43,11 @@
     .list {
         margin: 0 200px;
     }
+}
+
+@media (max-width: 700px){
+    ion-searchbar {
+        left: 1px;
+        max-width: 700px;
+      }
 }

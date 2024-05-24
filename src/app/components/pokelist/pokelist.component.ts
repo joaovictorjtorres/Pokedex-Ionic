@@ -3,19 +3,24 @@ import { PokecardComponent } from '../pokecard/pokecard.component';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from 'src/app/service/pokeservice/pokemon.service';
 import { PokemodalComponent } from '../pokemodal/pokemodal.component';
+import { IonSearchbar } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-pokelist',
   templateUrl: './pokelist.component.html',
   styleUrls: ['./pokelist.component.scss'],
   standalone: true,
-  imports: [ PokecardComponent, CommonModule, PokemodalComponent ]
+  imports: [ PokecardComponent, CommonModule, PokemodalComponent, IonSearchbar ]
 })
 export class PokelistComponent implements OnInit {
 
   pokemonList: any = [];
 
-  constructor(private pokemonService: PokemonService) {}
+  filteredPokemon: any[];
+
+  constructor(private pokemonService: PokemonService) {
+ 
+  }
 
   ngOnInit() {
     this.getPokemonList();
@@ -26,10 +31,25 @@ export class PokelistComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.pokemonList = res
+          this.filteredPokemon = res
+          console.log(res)
         },
         error: (err) => {
           console.error(err)
         }});
+  }
+
+  filterItems(event: any) {
+
+    if(!event){
+      this.filteredPokemon = this.pokemonList;
+    }
+
+    const searchTerm: string = event.target.value.toLowerCase();
+
+    this.filteredPokemon = this.pokemonList.filter((pokemon:any) => {
+      return pokemon.name.toLowerCase().indexOf(searchTerm) > -1;
+    });
   }
 
   getTypes(item:any) {
