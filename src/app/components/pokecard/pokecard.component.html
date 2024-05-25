@@ -1,20 +1,27 @@
 <div class="box">
-
   <div class="box-imgBox">
-    
-    <img src="{{pokeImage}}">
-    <h4 class="pokeId">n⁰ {{pokeId}}</h4>
-    <h3 class="pokeName">{{pokeName}}</h3>
+
+    <img src="{{pokemonInfo.sprites.other['official-artwork'].front_default}}" (click)="openModal(pokemonInfo)">
+    <h4 class="pokeId">n⁰ {{pokemonInfo.id.toString().padStart(4, '0')}}</h4>
+    <h3 class="pokeName">{{(pokemonInfo.name.charAt(0).toUpperCase() + pokemonInfo.name.slice(1).toLowerCase()).split("-")[0]}}</h3>
 
     <div class="boxTypes">
 
-      <h5 class="{{ pokeTypes[0] }}-type">{{ pokeTypes[0] }}</h5>
+      <h5 class="{{ pokemonInfo.types[0].type.name }}-type">{{ pokemonInfo.types[0].type.name }}</h5>
       
-      <ng-container *ngIf="pokeTypes[1]">
-        <h5 class="{{ pokeTypes[1] }}-type">{{ pokeTypes[1] }}</h5>
+      <ng-container *ngIf="pokemonInfo.types.length > 1">
+        <h5 class="{{ pokemonInfo.types[1].type.name }}-type">{{ pokemonInfo.types[1].type.name }}</h5>
       </ng-container>
 
     </div>
   </div>
 </div>
+
+
+<app-pokemodal
+  [isModalOpen]="isModalOpen"
+  [selectedPoke]="selectedPoke"
+  (isModalOpenChange)="isModalOpen=$event">
+</app-pokemodal>
+
 

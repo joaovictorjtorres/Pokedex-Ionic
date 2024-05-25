@@ -46,6 +46,7 @@ export class PokemodalComponent {
   isModalOpenChange = new EventEmitter<boolean>();
 
   favoriteColor:string = 'red';
+  favoritedPokemon:any = [];
 
   favorite(){
     this.favoriteColor = this.favoriteColor === 'red' ? 'yellow' : 'red';

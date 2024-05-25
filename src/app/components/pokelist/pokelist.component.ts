@@ -3,85 +3,115 @@ import { PokecardComponent } from '../pokecard/pokecard.component';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from 'src/app/service/pokeservice/pokemon.service';
 import { PokemodalComponent } from '../pokemodal/pokemodal.component';
-import { IonSearchbar } from '@ionic/angular/standalone';
+import { IonSearchbar, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-pokelist',
   templateUrl: './pokelist.component.html',
   styleUrls: ['./pokelist.component.scss'],
   standalone: true,
-  imports: [ PokecardComponent, CommonModule, PokemodalComponent, IonSearchbar ]
+  imports: [ PokecardComponent, CommonModule, PokemodalComponent, IonSearchbar, IonInfiniteScroll, IonInfiniteScrollContent ]
 })
 export class PokelistComponent implements OnInit {
 
-  pokemonList: any = [];
 
-  filteredPokemon: any[];
-
-  constructor(private pokemonService: PokemonService) {
- 
-  }
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
     this.getPokemonList();
+    this.getAllPokemonNames();
   }
+
+  pokemonList: any[] = [];
+  filteredPokemon: any[] = [];
+  allPokemonNames: any[] = [];
+  start: number = 1;
+  end: number = 40;
+  allPokemonLoaded: boolean = false;
+  filterTimer: any;
 
   getPokemonList() {
-    this.pokemonService.getPokemonData()
+    this.pokemonService.getPokemonData(this.start, this.end)
       .subscribe({
         next: (res) => {
-          this.pokemonList = res
-          this.filteredPokemon = res
-          console.log(res)
+          this.pokemonList = [...this.pokemonList, ...res];
+          this.filteredPokemon = [...this.filteredPokemon, ...res];
+          this.checkIfAllLoaded(res.length);
         },
         error: (err) => {
-          console.error(err)
-        }});
+          console.error(err);
+        }
+      });
   }
 
-  filterItems(event: any) {
-
-    if(!event){
-      this.filteredPokemon = this.pokemonList;
-    }
-
-    const searchTerm: string = event.target.value.toLowerCase();
-
-    this.filteredPokemon = this.pokemonList.filter((pokemon:any) => {
-      return pokemon.name.toLowerCase().indexOf(searchTerm) > -1;
+  getAllPokemonNames() {
+    this.pokemonService.getAllPokemonNames().subscribe({
+      next: (res) => {
+        this.allPokemonNames = res;
+      },
+      error: (err) => {
+        console.error(err);
+      }
     });
   }
 
-  getTypes(item:any) {
-    if (item.types.length === 1) {
-      return [item.types[0].type.name];
-    } else {
-      return [item.types[0].type.name, item.types[1].type.name];
+  checkIfAllLoaded(length: number) {
+    if (length < (this.end - this.start + 1)) {
+      this.allPokemonLoaded = true;
     }
   }
 
-  isModalOpen = false;
-
-  selectedPoke: object = {};
-
-  openModal(selectedPokeInfo:any) {
-      
-    this.isModalOpen = true;
-
-    this.selectedPoke = {
-          image: selectedPokeInfo.sprites.other['official-artwork'].front_default,
-          name: selectedPokeInfo.name.charAt(0).toUpperCase() + selectedPokeInfo.name.slice(1).toLowerCase(),
-          order: selectedPokeInfo.id.toString().padStart(4, '0'),
-          types: this.getTypes(selectedPokeInfo),
-          height: selectedPokeInfo.height / 10,
-          weight: selectedPokeInfo.weight / 10,
-          hp: selectedPokeInfo.stats[0].base_stat,
-          atk: selectedPokeInfo.stats[1].base_stat,
-          def: selectedPokeInfo.stats[2].base_stat,
-          spatk: selectedPokeInfo.stats[3].base_stat,
-          spdef: selectedPokeInfo.stats[4].base_stat,
-          spd: selectedPokeInfo.stats[5].base_stat
+  filterItems(event: any) {
+    clearTimeout(this.filterTimer);
+    const searchTerm: string = event.target.value.toLowerCase();
+  
+    this.filterTimer = setTimeout(() => {
+      if (!searchTerm) {
+        this.filteredPokemon = this.pokemonList;
+        return;
+      }
+  
+      const filteredNames = this.allPokemonNames.filter((pokemon: any) => {
+        return pokemon.name.toLowerCase().includes(searchTerm);
+      });
+  
+      this.filteredPokemon = [];
+      const filteredIds = filteredNames.map((pokemon: any) => this.getIdFromUrl(pokemon.url));
+  
+      filteredIds.forEach(id => {
+        if (!this.pokemonList.find(p => p.id === id)) {
+          this.pokemonService.getEndpoint(id).subscribe({
+            next: (res) => {
+              this.filteredPokemon.push(res);
+            },
+            error: (err) => {
+              console.error(err);
+            }
+          });
+        } else {
+          const existingPokemon = this.pokemonList.find(p => p.id === id);
+          this.filteredPokemon.push(existingPokemon);
         }
+      });
+    }, 500);
   }
 
+  getIdFromUrl(url: string): number {
+    const parts = url.split('/');
+    return +parts[parts.length - 2];
+  }
+
+  loadMore(event: any) {
+    this.start = this.end + 1;
+    this.end = this.end + 40;
+
+    this.getPokemonList();
+
+    setTimeout(() => {
+      event.target.complete();
+      if (this.allPokemonLoaded) {
+        event.target.disabled = true;
+      }
+    }, 500);
+  }
 }

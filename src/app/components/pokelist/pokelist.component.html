@@ -1,24 +1,14 @@
-
-
-
-<div class="box" >
-        
-    <ion-searchbar animated="true" (ionChange)="filterItems($event)"></ion-searchbar>
+<div class="box">
+    <ion-searchbar animated="true" (ionInput)="filterItems($event)"></ion-searchbar>
     <div class="box-card">
         <div class="list">
-            <app-pokecard *ngFor="let item of filteredPokemon"
-            [pokeName]="item.name.charAt(0).toUpperCase() + item.name.slice(1).toLowerCase()"
-            [pokeId]="item.id.toString().padStart(4, '0')"
-            [pokeImage]="item.sprites.other['official-artwork'].front_default"
-            [pokeTypes]="getTypes(item)"
-            (click)="openModal(item)"></app-pokecard>
+            <app-pokecard *ngFor="let item of filteredPokemon" [pokemonInfo]="item"></app-pokecard>
+            <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+                <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="Load more pokémon...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
         </div>
     </div>  
-
-    <app-pokemodal
-    [isModalOpen]="isModalOpen"
-    [selectedPoke]="selectedPoke"
-    (isModalOpenChange)="isModalOpen=$event">
-    </app-pokemodal>
-
 </div>

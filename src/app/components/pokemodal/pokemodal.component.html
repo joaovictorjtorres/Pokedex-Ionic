@@ -14,7 +14,7 @@
         <img class="pokemon-image"[src]="selectedPoke.image" />
         <ion-card-header>
           <h6 class="pokemonOrder">{{selectedPoke.order}}</h6>
-          <h3 class="pokemonName">{{selectedPoke.name}}</h3>
+          <h3 class="pokemonName">{{selectedPoke.name.split("-")[0]}}</h3>
           <div class="pokemonTypes">
             <h4 class="{{ selectedPoke.types[0] }}-type">{{selectedPoke.types[0]}}</h4>
             <ng-container *ngIf="selectedPoke.types[1]">
