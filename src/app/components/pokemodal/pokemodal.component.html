@@ -29,27 +29,39 @@
         <ion-card-content>
           <ul class="pokemonStats">
             <li>
-              <div class="progress-bar" [ngClass]="getProgressBarClass(selectedPoke.hp)"></div>
+              <div class="progress-bar"
+              [ngClass]="getProgressBarClass(selectedPoke.hp)"
+              [style.width]="getProgressWidth(selectedPoke.hp)"></div>
               <b>HP</b><i>{{selectedPoke.hp}}</i>
           </li>
           <li>
-              <div class="progress-bar" [ngClass]="getProgressBarClass(selectedPoke.atk)"></div>
+              <div class="progress-bar"
+              [ngClass]="getProgressBarClass(selectedPoke.atk)"
+              [style.width]="getProgressWidth(selectedPoke.atk)"></div>
               <b>ATK</b><i>{{selectedPoke.atk}}</i>
           </li>
           <li> 
-              <div class="progress-bar" [ngClass]="getProgressBarClass(selectedPoke.def)"></div>
+              <div class="progress-bar"
+              [ngClass]="getProgressBarClass(selectedPoke.def)"
+              [style.width]="getProgressWidth(selectedPoke.def)"></div>
               <b>DEF</b><i>{{selectedPoke.def}}</i>
           </li>
           <li>
-              <div class="progress-bar" [ngClass]="getProgressBarClass(selectedPoke.spatk)"></div>
+              <div class="progress-bar"
+              [ngClass]="getProgressBarClass(selectedPoke.spatk)"
+              [style.width]="getProgressWidth(selectedPoke.spatk)"></div>
               <b>SPATK</b><i>{{selectedPoke.spatk}}</i>
           </li>
           <li>
-              <div class="progress-bar" [ngClass]="getProgressBarClass(selectedPoke.spdef)"></div>
+              <div class="progress-bar"
+              [ngClass]="getProgressBarClass(selectedPoke.spdef)"
+              [style.width]="getProgressWidth(selectedPoke.spdef)"></div>
               <b>SPDEF</b><i>{{selectedPoke.spdef}}</i>
           </li>
           <li>
-              <div class="progress-bar" [ngClass]="getProgressBarClass(selectedPoke.spd)"></div>
+              <div class="progress-bar"
+              [ngClass]="getProgressBarClass(selectedPoke.spd)"
+              [style.width]="getProgressWidth(selectedPoke.spd)"></div>
               <b>SPD</b><i>{{selectedPoke.spd}}</i>
           </li>
           

@@ -57,6 +57,10 @@ export class PokemodalComponent {
     this.isModalOpenChange.emit(false);
   }
 
+  getProgressWidth(value:number) {
+    return (value / 255) * 100 + '%';
+  }
+
   getProgressBarClass(stat: number): string {
 
     if (stat >= 0 && stat <= 49) {

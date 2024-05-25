@@ -176,58 +176,33 @@ $type-colors: (
     height: 10px;
     border-radius: 5px;
     margin-top: 5px;
-    width: 100%;
+    max-width: 80%;
   }
   
   .one-bar {
     background-color: rgb(210, 23, 23);
-    width: 15%;
   }
   
   .two-bar {
     background-color: rgb(236, 106, 54);
-    width: 35%;
   }
   
   .three-bar {
     background-color: rgb(215, 215, 71);
-    width: 55%;
   }
   
   .four-bar {
     background-color: rgb(41, 192, 41);
-    width: 70%;
   }
   
   .five-bar {
     background-color: rgb(96, 96, 197);
-    width: 80%;
   }
   
 
-@media (max-width: 470px){
-  .one-bar {
-    background-color: rgb(210, 23, 23);
-    width: 5%;
-  }
-  
-  .two-bar {
-    background-color: rgb(236, 106, 54);
-    width: 45%;
-  }
-  
-  .three-bar {
-    background-color: rgb(215, 215, 71);
-    width: 45%;
-  }
-  
-  .four-bar {
-    background-color: rgb(41, 192, 41);
-    width: 60%;
-  }
-  
-  .five-bar {
-    background-color: rgb(96, 96, 197);
-    width: 70%;
+@media (max-width: 360px){
+
+  .progress-bar {
+     max-width: 70%;
   }
 }
