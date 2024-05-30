@@ -12,9 +12,12 @@ export class PokefavService {
   addFavorite(pokemon: any) {
     const currentFavorites = this._favoriteList.getValue();
   
-    const updatedFavorites = [...currentFavorites, pokemon];
-
-    this._favoriteList.next(updatedFavorites);
+    const exists = currentFavorites.some((fav: any) => fav.name === pokemon.name);
+    
+    if (!exists) {
+      const updatedFavorites = [...currentFavorites, pokemon];
+      this._favoriteList.next(updatedFavorites);
+    }
   }
 
   getFavorites(){

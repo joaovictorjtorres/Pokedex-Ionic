@@ -6,7 +6,6 @@
 }
 
 .box-card{
-    position: relative;
 }
 
 .list{
@@ -18,6 +17,29 @@
     justify-content: space-evenly;
     gap: 5px;
 }
+
+.card-conteiner{
+    position: relative;
+    max-height: 320px;
+}
+
+.delete-button {
+    background-color: gray;
+    font-weight: bold;
+    position: absolute;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .delete-button:hover{
+    background-color: rgb(62, 62, 62);
+    color: rgb(213, 70, 70);
+  }
 
 .mat-paginator-conteiner {
     position: fixed;

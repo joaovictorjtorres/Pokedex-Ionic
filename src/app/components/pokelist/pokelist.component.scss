@@ -15,6 +15,32 @@
     gap: 5px;
 }
 
+.card-conteiner{
+    position: relative;
+    max-height: 320px;
+}
+
+.favorite-button {
+    background-color: gray;
+    font-weight: bold;
+    position: absolute;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    right: 16px;
+    bottom: 80px;
+    cursor: pointer;
+    z-index: 1;
+    
+  }
+
+  .favorite-button:hover{
+    background-color: rgb(62, 62, 62);
+    color: rgb(94, 203, 94);
+  }
+
 ion-searchbar {
     margin-top: 10px;
     margin-right: 7px;
@@ -22,7 +48,7 @@ ion-searchbar {
     right: 15px;
     max-width: 300px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
   }
 
 .custom-modal {

@@ -1,30 +1,27 @@
-/* Estilo para o conteúdo da página */
 .about-content {
     padding: 20px;
   }
   
-  /* Estilo para o wrapper do conteúdo */
   .about-wrapper {
     text-align: center;
-    max-width: 100%; /* Garante que o conteúdo não ultrapasse a largura máxima da tela */
-    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+    max-width: 100%;
+    margin: 0 auto; 
   }
   
-  /* Estilo para a imagem do ícone do Pokeball */
+ 
   .about-wrapper img {
-    width: 100px; /* Ajuste conforme necessário */
+    width: 100px;
     height: auto;
     margin-bottom: 20px;
   }
   
-  /* Estilo para o título "Bem-vindo à Pokedex!" */
+ 
   .about-wrapper h2 {
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
   }
   
-  /* Estilo para os parágrafos de texto */
   .about-wrapper p {
     font-size: 16px;
     line-height: 1.5;
@@ -32,9 +29,8 @@
     margin-bottom: 15px;
   }
   
-  /* Estilo para o link do GitHub */
+
   .about-wrapper a {
-    color: #007bff; /* Azul padrão do Bootstrap */
     text-decoration: none;
     font-weight: bold;
   }
@@ -43,7 +39,6 @@
     text-decoration: underline;
   }
   
-  /* Mídia para adicionar margens laterais quando a largura for maior que 500px */
   @media (min-width: 500px) {
     .about-wrapper {
       margin-left: 100px;

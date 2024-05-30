@@ -15,15 +15,10 @@ export class PokecardComponent {
   @Input()
   pokemonInfo: any;
 
-  favoriteColor: string = 'red';
-  isModalOpen = false;
-  selectedPoke: any = {
-    
-  };
+  @Input()
+  selectedPoke: any;
 
-  favorite() {
-    this.favoriteColor = this.favoriteColor === 'red' ? 'yellow' : 'red';
-  }
+  isModalOpen = false;
 
   openModal() {
     this.isModalOpen = true;

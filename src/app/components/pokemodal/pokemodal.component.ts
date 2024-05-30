@@ -37,7 +37,7 @@ import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service'
     IonCard
   ]
 })
-export class PokemodalComponent implements OnInit {
+export class PokemodalComponent{
 
   @Input()
   isModalOpen = false;
@@ -45,35 +45,8 @@ export class PokemodalComponent implements OnInit {
   selectedPoke: any;
   @Output()
   isModalOpenChange = new EventEmitter<boolean>();
-  @Output()
-  favoriteChange = new EventEmitter<any[]>();
 
-  favoriteColor: string = '';
-  // favoritePokemonList: any = {};
-
-  constructor(private favoriteService: PokefavService ) {}
-  ngOnInit(): void {
-    this.favoriteService.isFavorite(this.selectedPoke) ? this.favoriteColor = 'yellow' : this.favoriteColor = 'gray';
-    
-  }
-
-  favorite() {
-    if(this.favoriteColor === 'gray'){
-      this.favoriteService.addFavorite(this.selectedPoke);
-      this.favoriteColor = 'yellow'
-      console.log(this.favoriteColor)
-      
-    } else {
-      this.closeModal()
-      this.favoriteColor = 'gray'
-      this.favoriteService.removeFavorite(this.selectedPoke);
-      console.log(this.favoriteColor)
-    }
-  }
-
-  get(){
-    this.favoriteService.getFavorites()
-  }
+  constructor() {}
 
 
   closeModal() {

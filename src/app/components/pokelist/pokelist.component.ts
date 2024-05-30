@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PokemonService } from 'src/app/service/pokeservice/pokemon.service';
 import { PokemodalComponent } from '../pokemodal/pokemodal.component';
 import { IonSearchbar, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
+import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service';
 
 @Component({
   selector: 'app-pokelist',
@@ -15,7 +16,7 @@ import { IonSearchbar, IonInfiniteScroll, IonInfiniteScrollContent } from '@ioni
 export class PokelistComponent implements OnInit {
 
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService, private favoriteService: PokefavService) {}
 
   ngOnInit() {
     this.getPokemonList();
@@ -45,12 +46,34 @@ export class PokelistComponent implements OnInit {
       });
   }
 
+  favorite(item:any) {
+      this.favoriteService.addFavorite(item);
+  }
+
   getTypes(item: any) {
     if (item.types.length === 1) {
       return [item.types[0].type.name];
     } else {
       return [item.types[0].type.name, item.types[1].type.name];
     }
+  }
+
+  getPokemonInfo(item:any){
+
+    return {
+            image: item.sprites.other['official-artwork'].front_default,
+            name: item.name.charAt(0).toUpperCase() + item.name.slice(1).toLowerCase(),
+            order: item.id.toString().padStart(4, '0'),
+            types: this.getTypes(item),
+            height: item.height / 10,
+            weight: item.weight / 10,
+            hp: item.stats[0].base_stat,
+            atk: item.stats[1].base_stat,
+            def: item.stats[2].base_stat,
+            spatk: item.stats[3].base_stat,
+            spdef: item.stats[4].base_stat,
+            spd: item.stats[5].base_stat
+          }
   }
 
   getAllPokemonNames() {

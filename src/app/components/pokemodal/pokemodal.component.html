@@ -10,9 +10,7 @@
     </ion-header>
     <ion-content>
       <ion-card class="pokemon-card">
-        <button class="favorite-button" (click)='favorite()' [ngStyle]="{'background-color': favoriteColor}">★</button>
-        <!-- <img class="favorite-button" (click)='favorite()' src="../../../assets/icon/heart-svgrepo-com.svg"> -->
-        <img (click)='get()' class="pokemon-image"[src]="selectedPoke.image" />
+        <img class="pokemon-image"[src]="selectedPoke.image" />
         <ion-card-header>
           <h6 class="pokemonOrder">{{selectedPoke.order}}</h6>
           <h3 class="pokemonName">{{selectedPoke.name}}</h3>

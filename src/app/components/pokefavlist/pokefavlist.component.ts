@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PokecardComponent } from '../pokecard/pokecard.component';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { PokemodalComponent } from '../pokemodal/pokemodal.component';
+import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service';
 
 
 @Component({
@@ -9,22 +11,31 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
   templateUrl: './pokefavlist.component.html',
   styleUrls: ['./pokefavlist.component.scss'],
   standalone: true,
-  imports: [CommonModule, PokecardComponent, MatPaginatorModule]
+  imports: [CommonModule, PokecardComponent, MatPaginatorModule, PokemodalComponent]
 })
 export class PokefavlistComponent implements OnChanges {
 
   @Input() favoritedPokemon: any[] = [];
 
   displayedPokemon: any[];
-  pageSize = 9;
+  pageSize = 8;
   currentPage = 0; 
+  isModalOpen = false;
 
-  constructor() { }
+  constructor(private favoriteService: PokefavService ) { }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['favoritedPokemon'] && changes['favoritedPokemon'].currentValue) {
       this.updateDisplayedPokemon();
     }
+  }
+
+  delete(pokemon: any){
+    this.favoriteService.removeFavorite(pokemon)
   }
 
   updateDisplayedPokemon() {
