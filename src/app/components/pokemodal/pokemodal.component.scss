@@ -69,10 +69,11 @@ $type-colors: (
   }
 
   .favorite-button {
+    font-size: 1.5em;
+    font-weight: bold;
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: red;
     color: white;
     border: none;
     border-radius: 50%;
@@ -142,7 +143,7 @@ $type-colors: (
 
   .custom-modal .pokemonStats li b{
     color: rgb(102, 191, 99);
-    right: 35px;
+    right: 38px;
     position: absolute;
   }
   
@@ -165,7 +166,6 @@ $type-colors: (
     cursor: pointer;
     padding: 0 8px;
     border-radius: 100%;
-    transition: transform 0.3s ease;
   }
   
   .close-button:hover {

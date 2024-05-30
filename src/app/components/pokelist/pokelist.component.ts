@@ -29,6 +29,7 @@ export class PokelistComponent implements OnInit {
   end: number = 40;
   allPokemonLoaded: boolean = false;
   filterTimer: any;
+  scrollEnabled: boolean = true;
 
   getPokemonList() {
     this.pokemonService.getPokemonData(this.start, this.end)
@@ -42,6 +43,14 @@ export class PokelistComponent implements OnInit {
           console.error(err);
         }
       });
+  }
+
+  getTypes(item: any) {
+    if (item.types.length === 1) {
+      return [item.types[0].type.name];
+    } else {
+      return [item.types[0].type.name, item.types[1].type.name];
+    }
   }
 
   getAllPokemonNames() {
@@ -63,11 +72,13 @@ export class PokelistComponent implements OnInit {
 
   filterItems(event: any) {
     clearTimeout(this.filterTimer);
+    this.scrollEnabled = false;
     const searchTerm: string = event.target.value.toLowerCase();
   
     this.filterTimer = setTimeout(() => {
       if (!searchTerm) {
         this.filteredPokemon = this.pokemonList;
+        this.scrollEnabled = true;
         return;
       }
   

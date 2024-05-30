@@ -1,0 +1,40 @@
+.box{
+    background-image: url('../../../assets/BW_stripes.jpg');
+    background-attachment: fixed;
+
+
+}
+
+.box-card{
+    position: relative;
+}
+
+.list{
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.mat-paginator-conteiner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 1175px) {
+    .list {
+        margin: 0 100px;
+    }
+}
+
+@media (min-width: 1200px){
+    .list {
+        margin: 0 200px;
+    }
+}
+

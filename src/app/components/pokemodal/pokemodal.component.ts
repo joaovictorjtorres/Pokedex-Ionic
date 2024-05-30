@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonHeader,
@@ -14,6 +14,7 @@ import {
   IonModal,
   IonCard
 } from '@ionic/angular/standalone';
+import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service';
 
 @Component({
   selector: 'app-pokemodal',
@@ -36,33 +37,55 @@ import {
     IonCard
   ]
 })
-export class PokemodalComponent {
+export class PokemodalComponent implements OnInit {
 
   @Input()
   isModalOpen = false;
   @Input()
-  selectedPoke:any;
+  selectedPoke: any;
   @Output()
   isModalOpenChange = new EventEmitter<boolean>();
+  @Output()
+  favoriteChange = new EventEmitter<any[]>();
 
-  favoriteColor:string = 'red';
-  favoritedPokemon:any = [];
+  favoriteColor: string = '';
+  // favoritePokemonList: any = {};
 
-  favorite(){
-    this.favoriteColor = this.favoriteColor === 'red' ? 'yellow' : 'red';
+  constructor(private favoriteService: PokefavService ) {}
+  ngOnInit(): void {
+    this.favoriteService.isFavorite(this.selectedPoke) ? this.favoriteColor = 'yellow' : this.favoriteColor = 'gray';
+    
   }
 
-  closeModal(){
+  favorite() {
+    if(this.favoriteColor === 'gray'){
+      this.favoriteService.addFavorite(this.selectedPoke);
+      this.favoriteColor = 'yellow'
+      console.log(this.favoriteColor)
+      
+    } else {
+      this.closeModal()
+      this.favoriteColor = 'gray'
+      this.favoriteService.removeFavorite(this.selectedPoke);
+      console.log(this.favoriteColor)
+    }
+  }
 
+  get(){
+    this.favoriteService.getFavorites()
+  }
+
+
+  closeModal() {
     this.isModalOpenChange.emit(false);
+
   }
 
-  getProgressWidth(value:number) {
-    return (value / 255) * 100 + '%';
+  getProgressWidth(value: number) {
+    return (value / 150) * 100 + '%';
   }
 
   getProgressBarClass(stat: number): string {
-
     if (stat >= 0 && stat <= 49) {
       return 'one-bar';
     } else if (stat >= 50 && stat <= 79) {

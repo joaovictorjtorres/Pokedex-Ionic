@@ -1,4 +1,4 @@
-<ion-modal class="custom-modal" [isOpen]="isModalOpen" (ionBackdropTap)="closeModal()">
+<ion-modal #modal class="custom-modal" [isOpen]="isModalOpen" (ionBackdropTap)="closeModal()">
   <ng-template>
     <ion-header>
       <ion-toolbar color="dark">
@@ -10,11 +10,12 @@
     </ion-header>
     <ion-content>
       <ion-card class="pokemon-card">
-        <button class="favorite-button" (click)="favorite()" [ngStyle]="{'background-color': favoriteColor}">&lt;3</button>
-        <img class="pokemon-image"[src]="selectedPoke.image" />
+        <button class="favorite-button" (click)='favorite()' [ngStyle]="{'background-color': favoriteColor}">★</button>
+        <!-- <img class="favorite-button" (click)='favorite()' src="../../../assets/icon/heart-svgrepo-com.svg"> -->
+        <img (click)='get()' class="pokemon-image"[src]="selectedPoke.image" />
         <ion-card-header>
           <h6 class="pokemonOrder">{{selectedPoke.order}}</h6>
-          <h3 class="pokemonName">{{selectedPoke.name.split("-")[0]}}</h3>
+          <h3 class="pokemonName">{{selectedPoke.name}}</h3>
           <div class="pokemonTypes">
             <h4 class="{{ selectedPoke.types[0] }}-type">{{selectedPoke.types[0]}}</h4>
             <ng-container *ngIf="selectedPoke.types[1]">
