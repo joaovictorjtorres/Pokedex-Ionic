@@ -13,40 +13,44 @@ $bug-color: #a8b820;
 $rock-color: #b8a038;
 $ghost-color: #705898;
 $dark-color: #705848;
-$dragon-color: #AFAFAF;
+$dragon-color: #afafaf;
 $steel-color: #b8b8d0;
 $fairy-color: #ee99ac;
 
 $type-colors: (
-    normal: $normal-color,
-    fire: $fire-color,
-    water: $water-color,
-    grass: $grass-color,
-    electric: $electric-color,
-    ice: $ice-color,
-    fighting: $fighting-color,
-    poison: $poison-color,
-    ground: $ground-color,
-    flying: $flying-color,
-    psychic: $psychic-color,
-    bug: $bug-color,
-    rock: $rock-color,
-    ghost: $ghost-color,
-    dark: $dark-color,
-    dragon: $dragon-color,
-    steel: $steel-color,
-    fairy: $fairy-color,
+  normal: $normal-color,
+  fire: $fire-color,
+  water: $water-color,
+  grass: $grass-color,
+  electric: $electric-color,
+  ice: $ice-color,
+  fighting: $fighting-color,
+  poison: $poison-color,
+  ground: $ground-color,
+  flying: $flying-color,
+  psychic: $psychic-color,
+  bug: $bug-color,
+  rock: $rock-color,
+  ghost: $ghost-color,
+  dark: $dark-color,
+  dragon: $dragon-color,
+  steel: $steel-color,
+  fairy: $fairy-color,
 );
 
 @each $type, $color in $type-colors {
   .#{$type}-type {
-      background-color: $color;
-      color: #fff;
+    background-color: $color;
+    color: #fff;
   }
 }
 
 .box {
-  &, & * { box-sizing: border-box; transition: 400ms; }
+  &,
+  & * {
+    box-sizing: border-box;
+    transition: 400ms;
+  }
   width: 100%;
   height: 320px;
   max-width: 350px;
@@ -96,20 +100,20 @@ $type-colors: (
   cursor: pointer;
   z-index: 1;
 }
-  
+
 .pokeId {
   text-align: left;
   margin-top: 10px;
   color: #838383;
   font-size: 14px;
 }
-  
+
 .pokeName {
   text-align: center;
   font-size: 25px;
 }
 
-.boxTypes{
+.boxTypes {
   margin-top: -15px;
   display: flex;
   align-items: center;
@@ -118,10 +122,9 @@ $type-colors: (
   margin-bottom: 10px;
 }
 
-.boxTypes h5{
+.boxTypes h5 {
   padding: 2px 15px;
   border-radius: 10%;
   border-end-start-radius: 20%;
   border-start-end-radius: 20%;
 }
-

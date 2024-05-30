@@ -1,62 +1,59 @@
-.box{
-    background-image: url('../../../assets/BW_stripes.jpg');
-    background-attachment: fixed;
-
-
+.box {
+  background-image: url("../../../assets/BW_stripes.jpg");
+  background-attachment: fixed;
 }
 
-.box-card{
+.box-card {
 }
 
-.list{
-    min-height: 100vh;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 5px;
+.list {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
 }
 
-.card-conteiner{
-    position: relative;
-    max-height: 320px;
+.card-conteiner {
+  position: relative;
+  max-height: 320px;
 }
 
 .delete-button {
-    background-color: gray;
-    font-weight: bold;
-    position: absolute;
-    color: white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 1;
-  }
+  background-color: gray;
+  font-weight: bold;
+  position: absolute;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
 
-  .delete-button:hover{
-    background-color: rgb(62, 62, 62);
-    color: rgb(213, 70, 70);
-  }
+.delete-button:hover {
+  background-color: rgb(62, 62, 62);
+  color: rgb(213, 70, 70);
+}
 
 .mat-paginator-conteiner {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1175px) {
+  .list {
+    margin: 0 100px;
   }
-
-  @media (min-width: 1175px) {
-    .list {
-        margin: 0 100px;
-    }
 }
 
-@media (min-width: 1200px){
-    .list {
-        margin: 0 200px;
-    }
+@media (min-width: 1200px) {
+  .list {
+    margin: 0 200px;
+  }
 }
-

@@ -13,196 +13,194 @@ $bug-color: #a8b820;
 $rock-color: #b8a038;
 $ghost-color: #705898;
 $dark-color: #705848;
-$dragon-color: #AFAFAF;
+$dragon-color: #afafaf;
 $steel-color: #b8b8d0;
 $fairy-color: #ee99ac;
 
 $type-colors: (
-    normal: $normal-color,
-    fire: $fire-color,
-    water: $water-color,
-    grass: $grass-color,
-    electric: $electric-color,
-    ice: $ice-color,
-    fighting: $fighting-color,
-    poison: $poison-color,
-    ground: $ground-color,
-    flying: $flying-color,
-    psychic: $psychic-color,
-    bug: $bug-color,
-    rock: $rock-color,
-    ghost: $ghost-color,
-    dark: $dark-color,
-    dragon: $dragon-color,
-    steel: $steel-color,
-    fairy: $fairy-color,
+  normal: $normal-color,
+  fire: $fire-color,
+  water: $water-color,
+  grass: $grass-color,
+  electric: $electric-color,
+  ice: $ice-color,
+  fighting: $fighting-color,
+  poison: $poison-color,
+  ground: $ground-color,
+  flying: $flying-color,
+  psychic: $psychic-color,
+  bug: $bug-color,
+  rock: $rock-color,
+  ghost: $ghost-color,
+  dark: $dark-color,
+  dragon: $dragon-color,
+  steel: $steel-color,
+  fairy: $fairy-color,
 );
 
 @each $type, $color in $type-colors {
   .#{$type}-type {
-      background-color: $color;
-      color: #fff;
+    background-color: $color;
+    color: #fff;
   }
 }
 
 .custom-modal ion-content {
-    --padding-start: 0;
-    --padding-end: 0;
-    --padding-top: 0;
-    --padding-bottom: 0;
-  }
-  
-  .custom-modal ion-card {
-    --border-radius: 15px;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .custom-modal ion-card-header {
-    text-align: center;
-  }
-  
-  .custom-modal ion-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
 
-  .favorite-button {
-    font-size: 1.5em;
-    font-weight: bold;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 1;
-  }
+.custom-modal ion-card {
+  --border-radius: 15px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
 
-  .pokemon-image{
-    max-width: 250px;
-    display: block;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .custom-modal .pokemonOrder {
-    font-size: 0.85em;
-    color: #666;
-  }
-  
-  .custom-modal .pokemonName {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  
-  .custom-modal .pokemonTypes {
-    font-size: 1.2em;
-    color: #4caf50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
+.custom-modal ion-card-header {
+  text-align: center;
+}
 
-  .custom-modal .pokemonTypes h4{
-    padding: 2px 15px;
-    border-radius: 10%;
-    border-end-start-radius: 20%;
-    border-start-end-radius: 20%;
-  }
-  
-  .custom-modal .pokemonHW {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-  }
-  
-  .custom-modal .pokemonStats {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-  }
-  
-  .custom-modal .pokemonStats li {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 10px;
-    border-bottom: 1px solid #eee;
-    width: 100%;
-    position: relative;
-  }
+.custom-modal ion-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .custom-modal .pokemonStats li b{
-    color: rgb(102, 191, 99);
-    right: 38px;
-    position: absolute;
-  }
-  
-  .custom-modal ion-button {
-    --background: transparent;
-    --color: #fff;
-    --padding-start: 0;
-    --padding-end: 0;
-  }
-  
-  .custom-modal ion-button ion-icon {
-    font-size: 1.5em;
-  }
+.favorite-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
 
-  .close-button {
-    background-color: #535353;
-    font-size: 1.5em;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    padding: 0 8px;
-    border-radius: 100%;
-  }
-  
-  .close-button:hover {
-    color: #ff4081;
-  }
+.pokemon-image {
+  max-width: 250px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
 
+.custom-modal .pokemonOrder {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.custom-modal .pokemonName {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.custom-modal .pokemonTypes {
+  font-size: 1.2em;
+  color: #4caf50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.custom-modal .pokemonTypes h4 {
+  padding: 2px 15px;
+  border-radius: 10%;
+  border-end-start-radius: 20%;
+  border-start-end-radius: 20%;
+}
+
+.custom-modal .pokemonHW {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.custom-modal .pokemonStats {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.custom-modal .pokemonStats li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  position: relative;
+}
+
+.custom-modal .pokemonStats li b {
+  color: rgb(102, 191, 99);
+  right: 38px;
+  position: absolute;
+}
+
+.custom-modal ion-button {
+  --background: transparent;
+  --color: #fff;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.custom-modal ion-button ion-icon {
+  font-size: 1.5em;
+}
+
+.close-button {
+  background-color: #535353;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 0 8px;
+  border-radius: 100%;
+}
+
+.close-button:hover {
+  color: #ff4081;
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  max-width: 80%;
+}
+
+.one-bar {
+  background-color: rgb(210, 23, 23);
+}
+
+.two-bar {
+  background-color: rgb(236, 106, 54);
+}
+
+.three-bar {
+  background-color: rgb(215, 215, 71);
+}
+
+.four-bar {
+  background-color: rgb(41, 192, 41);
+}
+
+.five-bar {
+  background-color: rgb(96, 96, 197);
+}
+
+@media (max-width: 360px) {
   .progress-bar {
-    height: 10px;
-    border-radius: 5px;
-    margin-top: 5px;
-    max-width: 80%;
-  }
-  
-  .one-bar {
-    background-color: rgb(210, 23, 23);
-  }
-  
-  .two-bar {
-    background-color: rgb(236, 106, 54);
-  }
-  
-  .three-bar {
-    background-color: rgb(215, 215, 71);
-  }
-  
-  .four-bar {
-    background-color: rgb(41, 192, 41);
-  }
-  
-  .five-bar {
-    background-color: rgb(96, 96, 197);
-  }
-  
-
-@media (max-width: 360px){
-
-  .progress-bar {
-     max-width: 70%;
+    max-width: 70%;
   }
 }

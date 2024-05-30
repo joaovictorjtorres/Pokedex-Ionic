@@ -1,5 +1,5 @@
-import { Component, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+
 import { PokemodalComponent } from '../pokemodal/pokemodal.component';
 import { PokefavlistComponent } from '../pokefavlist/pokefavlist.component';
 
@@ -8,10 +8,9 @@ import { PokefavlistComponent } from '../pokefavlist/pokefavlist.component';
   templateUrl: './pokecard.component.html',
   styleUrls: ['./pokecard.component.scss'],
   standalone: true,
-  imports: [PokemodalComponent, CommonModule, PokefavlistComponent]
+  imports: [PokemodalComponent, PokefavlistComponent],
 })
 export class PokecardComponent {
-
   @Input()
   pokemonInfo: any;
 
@@ -23,5 +22,4 @@ export class PokecardComponent {
   openModal() {
     this.isModalOpen = true;
   }
-  
 }

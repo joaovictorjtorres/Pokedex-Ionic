@@ -1,13 +1,17 @@
 <div class="box">
   <div class="box-imgBox">
-    <img src="{{pokemonInfo.image}}" (click)="openModal()">
-    <h4 class="pokeId">n⁰ {{pokemonInfo.order}}</h4>
-    <h3 class="pokeName">{{pokemonInfo.name}}</h3>
+    <img src="{{ pokemonInfo.image }}" (click)="openModal()" />
+    <h4 class="pokeId">n⁰ {{ pokemonInfo.order }}</h4>
+    <h3 class="pokeName">{{ pokemonInfo.name }}</h3>
     <div class="boxTypes">
-      <h5 class="{{ pokemonInfo.types[0] }}-type">{{ pokemonInfo.types[0] }}</h5>
-      <ng-container *ngIf="pokemonInfo.types.length > 1">
-        <h5 class="{{ pokemonInfo.types[1] }}-type">{{ pokemonInfo.types[1] }}</h5>
-      </ng-container>
+      <h5 class="{{ pokemonInfo.types[0] }}-type">
+        {{ pokemonInfo.types[0] }}
+      </h5>
+      @if (pokemonInfo.types.length > 1) {
+      <h5 class="{{ pokemonInfo.types[1] }}-type">
+        {{ pokemonInfo.types[1] }}
+      </h5>
+      }
     </div>
   </div>
 </div>
@@ -15,5 +19,6 @@
 <app-pokemodal
   [isModalOpen]="isModalOpen"
   [selectedPoke]="pokemonInfo"
-  (isModalOpenChange)="isModalOpen=$event">
+  (isModalOpenChange)="isModalOpen = $event"
+>
 </app-pokemodal>

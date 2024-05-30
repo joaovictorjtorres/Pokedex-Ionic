@@ -1,79 +1,76 @@
-.box{
-    background-image: url('../../../assets/BW_stripes.jpg');
-    background-attachment: fixed;
-
-
+.box {
+  background-image: url("../../../assets/BW_stripes.jpg");
+  background-attachment: fixed;
 }
 
-.list{
-    min-height: 100vh;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 5px;
+.list {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
 }
 
-.card-conteiner{
-    position: relative;
-    max-height: 320px;
+.card-conteiner {
+  position: relative;
+  max-height: 320px;
 }
 
 .favorite-button {
-    background-color: gray;
-    font-weight: bold;
-    position: absolute;
-    color: white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 30px;
-    right: 16px;
-    bottom: 80px;
-    cursor: pointer;
-    z-index: 1;
-    
-  }
+  background-color: gray;
+  font-weight: bold;
+  position: absolute;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  right: 16px;
+  bottom: 80px;
+  cursor: pointer;
+  z-index: 1;
+}
 
-  .favorite-button:hover{
-    background-color: rgb(62, 62, 62);
-    color: rgb(94, 203, 94);
-  }
+.favorite-button:hover {
+  background-color: rgb(62, 62, 62);
+  color: rgb(94, 203, 94);
+}
 
 ion-searchbar {
-    margin-top: 10px;
-    margin-right: 7px;
-    padding: 0;
-    right: 15px;
-    max-width: 300px;
-    position: fixed;
-    z-index: 2;
-  }
+  margin-top: 10px;
+  margin-right: 7px;
+  padding: 0;
+  right: 15px;
+  max-width: 300px;
+  position: fixed;
+  z-index: 2;
+}
 
 .custom-modal {
-    --background: rgba(0, 0, 0, 0.75);
-    --border-radius: 15px;
-    --max-width: 500px;
-    --margin: auto;
-    --padding: 20px;
+  --background: rgba(0, 0, 0, 0.75);
+  --border-radius: 15px;
+  --max-width: 500px;
+  --margin: auto;
+  --padding: 20px;
+}
+
+@media (min-width: 1175px) {
+  .list {
+    margin: 0 100px;
   }
-
-  @media (min-width: 1175px) {
-    .list {
-        margin: 0 100px;
-    }
 }
 
-@media (min-width: 1200px){
-    .list {
-        margin: 0 200px;
-    }
+@media (min-width: 1200px) {
+  .list {
+    margin: 0 200px;
+  }
 }
 
-@media (max-width: 700px){
-    ion-searchbar {
-        left: 1px;
-        max-width: 700px;
-      }
+@media (max-width: 700px) {
+  ion-searchbar {
+    left: 1px;
+    max-width: 700px;
+  }
 }

@@ -12,7 +12,7 @@ import {
   IonCardTitle,
   IonCardHeader,
   IonModal,
-  IonCard
+  IonCard,
 } from '@ionic/angular/standalone';
 import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service';
 
@@ -21,7 +21,7 @@ import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service'
   templateUrl: './pokemodal.component.html',
   styleUrls: ['./pokemodal.component.scss'],
   standalone: true,
-  imports: [ 
+  imports: [
     CommonModule,
     IonHeader,
     IonToolbar,
@@ -34,11 +34,10 @@ import { PokefavService } from 'src/app/service/favoriteservice/pokefav.service'
     IonCardTitle,
     IonCardHeader,
     IonModal,
-    IonCard
-  ]
+    IonCard,
+  ],
 })
-export class PokemodalComponent{
-
+export class PokemodalComponent {
   @Input()
   isModalOpen = false;
   @Input()
@@ -48,10 +47,8 @@ export class PokemodalComponent{
 
   constructor() {}
 
-
   closeModal() {
     this.isModalOpenChange.emit(false);
-
   }
 
   getProgressWidth(value: number) {

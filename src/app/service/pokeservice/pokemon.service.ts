@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin, map } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonService {
-
   private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) {}
@@ -24,9 +23,8 @@ export class PokemonService {
   }
 
   getAllPokemonNames(): Observable<any> {
-    return this.http.get(`${this.baseUrl}?limit=1015`).pipe(
-      map((res: any) => res.results)
-    );
+    return this.http
+      .get(`${this.baseUrl}?limit=1015`)
+      .pipe(map((res: any) => res.results));
   }
-   
 }

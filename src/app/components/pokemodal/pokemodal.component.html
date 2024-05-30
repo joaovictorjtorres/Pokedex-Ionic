@@ -1,8 +1,13 @@
-<ion-modal #modal class="custom-modal" [isOpen]="isModalOpen" (ionBackdropTap)="closeModal()">
+<ion-modal
+  #modal
+  class="custom-modal"
+  [isOpen]="isModalOpen"
+  (ionBackdropTap)="closeModal()"
+>
   <ng-template>
     <ion-header>
       <ion-toolbar color="dark">
-        <ion-title>{{selectedPoke.name}}</ion-title>
+        <ion-title>{{ selectedPoke.name }}</ion-title>
         <ion-buttons slot="end">
           <ion-button class="close-button" (click)="closeModal()">x</ion-button>
         </ion-buttons>
@@ -10,63 +15,78 @@
     </ion-header>
     <ion-content>
       <ion-card class="pokemon-card">
-        <img class="pokemon-image"[src]="selectedPoke.image" />
+        <img class="pokemon-image" [src]="selectedPoke.image" />
         <ion-card-header>
-          <h6 class="pokemonOrder">{{selectedPoke.order}}</h6>
-          <h3 class="pokemonName">{{selectedPoke.name}}</h3>
+          <h6 class="pokemonOrder">{{ selectedPoke.order }}</h6>
+          <h3 class="pokemonName">{{ selectedPoke.name }}</h3>
           <div class="pokemonTypes">
-            <h4 class="{{ selectedPoke.types[0] }}-type">{{selectedPoke.types[0]}}</h4>
-            <ng-container *ngIf="selectedPoke.types[1]">
-              <h4 class="{{ selectedPoke.types[1] }}-type">{{ selectedPoke.types[1] }}</h4>
-            </ng-container>
+            <h4 class="{{ selectedPoke.types[0] }}-type">
+              {{ selectedPoke.types[0] }}
+            </h4>
+            @if (selectedPoke.types[1]) {
+            <h4 class="{{ selectedPoke.types[1] }}-type">
+              {{ selectedPoke.types[1] }}
+            </h4>
+            }
           </div>
           <div class="pokemonHW">
-            <h6>Height: {{selectedPoke.height}} m</h6>
-            <h6>Weight: {{selectedPoke.weight}} kg</h6>
+            <h6>Height: {{ selectedPoke.height }} m</h6>
+            <h6>Weight: {{ selectedPoke.weight }} kg</h6>
           </div>
         </ion-card-header>
         <ion-card-content>
           <ul class="pokemonStats">
             <li>
-              <div class="progress-bar"
-              [ngClass]="getProgressBarClass(selectedPoke.hp)"
-              [style.width]="getProgressWidth(selectedPoke.hp)"></div>
-              <b>HP</b><i>{{selectedPoke.hp}}</i>
-          </li>
-          <li>
-              <div class="progress-bar"
-              [ngClass]="getProgressBarClass(selectedPoke.atk)"
-              [style.width]="getProgressWidth(selectedPoke.atk)"></div>
-              <b>ATK</b><i>{{selectedPoke.atk}}</i>
-          </li>
-          <li> 
-              <div class="progress-bar"
-              [ngClass]="getProgressBarClass(selectedPoke.def)"
-              [style.width]="getProgressWidth(selectedPoke.def)"></div>
-              <b>DEF</b><i>{{selectedPoke.def}}</i>
-          </li>
-          <li>
-              <div class="progress-bar"
-              [ngClass]="getProgressBarClass(selectedPoke.spatk)"
-              [style.width]="getProgressWidth(selectedPoke.spatk)"></div>
-              <b>SPATK</b><i>{{selectedPoke.spatk}}</i>
-          </li>
-          <li>
-              <div class="progress-bar"
-              [ngClass]="getProgressBarClass(selectedPoke.spdef)"
-              [style.width]="getProgressWidth(selectedPoke.spdef)"></div>
-              <b>SPDEF</b><i>{{selectedPoke.spdef}}</i>
-          </li>
-          <li>
-              <div class="progress-bar"
-              [ngClass]="getProgressBarClass(selectedPoke.spd)"
-              [style.width]="getProgressWidth(selectedPoke.spd)"></div>
-              <b>SPD</b><i>{{selectedPoke.spd}}</i>
-          </li>
-          
+              <div
+                class="progress-bar"
+                [ngClass]="getProgressBarClass(selectedPoke.hp)"
+                [style.width]="getProgressWidth(selectedPoke.hp)"
+              ></div>
+              <b>HP</b><i>{{ selectedPoke.hp }}</i>
+            </li>
+            <li>
+              <div
+                class="progress-bar"
+                [ngClass]="getProgressBarClass(selectedPoke.atk)"
+                [style.width]="getProgressWidth(selectedPoke.atk)"
+              ></div>
+              <b>ATK</b><i>{{ selectedPoke.atk }}</i>
+            </li>
+            <li>
+              <div
+                class="progress-bar"
+                [ngClass]="getProgressBarClass(selectedPoke.def)"
+                [style.width]="getProgressWidth(selectedPoke.def)"
+              ></div>
+              <b>DEF</b><i>{{ selectedPoke.def }}</i>
+            </li>
+            <li>
+              <div
+                class="progress-bar"
+                [ngClass]="getProgressBarClass(selectedPoke.spatk)"
+                [style.width]="getProgressWidth(selectedPoke.spatk)"
+              ></div>
+              <b>SPATK</b><i>{{ selectedPoke.spatk }}</i>
+            </li>
+            <li>
+              <div
+                class="progress-bar"
+                [ngClass]="getProgressBarClass(selectedPoke.spdef)"
+                [style.width]="getProgressWidth(selectedPoke.spdef)"
+              ></div>
+              <b>SPDEF</b><i>{{ selectedPoke.spdef }}</i>
+            </li>
+            <li>
+              <div
+                class="progress-bar"
+                [ngClass]="getProgressBarClass(selectedPoke.spd)"
+                [style.width]="getProgressWidth(selectedPoke.spd)"
+              ></div>
+              <b>SPD</b><i>{{ selectedPoke.spd }}</i>
+            </li>
           </ul>
         </ion-card-content>
       </ion-card>
-    </ion-content>  
+    </ion-content>
   </ng-template>
 </ion-modal>

@@ -1,10 +1,12 @@
 <div class="box">
   <div class="box-card">
     <div class="list">
-      <div class="card-conteiner" *ngFor="let pokemon of displayedPokemon">
+      @for (pokemon of displayedPokemon; track pokemon) {
+      <div class="card-conteiner">
         <button class="delete-button" (click)="delete(pokemon)">X</button>
         <app-pokecard [pokemonInfo]="pokemon"></app-pokecard>
       </div>
+      }
     </div>
     <div class="mat-paginator-conteiner">
       <mat-paginator
