@@ -45,6 +45,13 @@ $type-colors: (
   }
 }
 
+ion-toolbar {
+  --ion-color-base: var(--ion-color-black);
+  --ion-color-contrast: var(--ion-color-black-contrast);
+  --ion-color-shade: var(--ion-color-black-shade);
+  --ion-color-tint: var(--ion-color-black-tint);
+}
+
 .custom-modal ion-content {
   --padding-start: 0;
   --padding-end: 0;
