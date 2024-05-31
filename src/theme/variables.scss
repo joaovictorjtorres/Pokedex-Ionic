@@ -4,16 +4,17 @@
 
 :root {
     --ion-color-black: #2f2f2f;
-    --ion-color-black-rgb: 18, 18, 18;
     --ion-color-black-contrast: #ffffff;
-    --ion-color-black-contrast-rgb: 255, 255, 255;
     --ion-color-black-shade: #292929;
     --ion-color-black-tint: #444;
 
+    --ion-color-white: #ffffff;
+    --ion-color-white-contrast: #242424;
+    --ion-color-white-shade: #c7c7c7;
+    --ion-color-white-tint: #a1a1a1;
+
     --ion-color-gray: #a8a8a8;
-    --ion-color-gray-rgb: 168, 168, 168;
     --ion-color-gray-contrast: #ffffff;
-    --ion-color-gray-contrast-rgb: 255, 255, 255;
     --ion-color-gray-shade: #949494;
     --ion-color-gray-tint: #b4b4b4;
   }

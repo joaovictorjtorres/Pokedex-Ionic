@@ -3,6 +3,13 @@
   background-attachment: fixed;
 }
 
+ion-searchbar {
+  --ion-color-base: var(--ion-color-white);
+  --ion-color-contrast: var(--ion-color-white-contrast);
+  --ion-color-shade: var(--ion-color-white-shade);
+  --ion-color-tint: var(--ion-color-white-tint);
+}
+
 .list {
   min-height: 100vh;
   background-color: white;
